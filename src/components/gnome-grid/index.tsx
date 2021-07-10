@@ -1,4 +1,4 @@
-import GnomeCard from "../GnomeCard";
+import GnomeCard from "../gnome-card";
 
 export default function GnomeGrid() {
   return (
