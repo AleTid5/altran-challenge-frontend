@@ -1,6 +1,7 @@
 @import "variables";
 @import "mixins";
 @import "../../components/Background/styles";
+@import "../../components/GnomeSearchBar/styles";
 
 body {
   margin: 0;
@@ -14,4 +15,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
