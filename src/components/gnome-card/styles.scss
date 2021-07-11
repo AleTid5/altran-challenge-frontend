@@ -1,0 +1,120 @@
+.gnome-card {
+  background-color: #393b3c;
+  border-radius: .35rem;
+
+  .profile {
+    display: flex;
+    justify-content: center;
+
+    &-image {
+      width: 55px;
+      height: 55px;
+      overflow: hidden;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      margin-top: -.5rem;
+      border: 2px solid rgba(252, 211, 77, .7);
+
+      @include media(sm) {
+        margin-top: -1rem;
+      }
+
+      @include media(md) {
+        width: 60px;
+        height: 60px;
+      }
+
+      @include media(lg) {
+        width: 65px;
+        height: 65px;
+        margin-top: -2rem;
+      }
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+
+  .container {
+    padding: 0.5rem 1rem 1rem 1rem;
+
+    @include media(lg) {
+      padding: 1rem;
+    }
+  }
+
+  .gnome {
+    &-anatomy {
+      color: #fcd34d;
+      font-size: 10px;
+      font-weight: bolder;
+      margin: 1rem;
+      font-style: italic;
+    }
+
+    &-name {
+      width: 100%;
+      color: white;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+
+      @include media(md) {
+        font-size: 1.1rem;
+      }
+
+      @include media(lg) {
+        font-size: 1.25rem;
+      }
+    }
+
+    &-information-row {
+      @extend .space-between;
+      margin-top: .5rem;
+
+      @include media(xl) {
+        margin-top: 1rem;
+      }
+    }
+
+    &-hair-color {
+      width: 1.5rem;
+      height: 1.5rem;
+
+      div {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .Pink {
+        background-color: #FBCFE8;
+      }
+
+      .Green {
+        background-color: #A7F3D0;
+      }
+
+      .Red {
+        background-color: #FECACA;
+      }
+
+      .Black {
+        background-color: black;
+      }
+
+      .Gray {
+        background-color: #9CA3AF;
+      }
+    }
+
+    &-age {
+      color: white;
+      font-weight: 400;
+      font-style: italic;
+    }
+  }
+}

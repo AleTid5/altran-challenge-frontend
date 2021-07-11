@@ -9,7 +9,9 @@ export default function App() {
     <Background>
       <GnomeSearchProvider>
         <GnomeSearchBar />
-        <GnomeGrid />
+        <div className="app-container">
+          <GnomeGrid />
+        </div>
       </GnomeSearchProvider>
     </Background>
   );
