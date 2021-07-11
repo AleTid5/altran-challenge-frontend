@@ -1,0 +1,23 @@
+.error-card {
+  background-color: #ff5887;
+  border-radius: .35rem;
+  width: 100%;
+  padding: .25rem .5rem;
+  color: #a01d40;
+
+  &-container {
+    display: flex;
+    max-width: 420px;
+    margin: auto;
+  }
+
+  &-title {
+    font-weight: 600;
+  }
+
+  &-description {
+    font-weight: 400;
+    font-style: italic;
+    margin-top: .25rem;
+  }
+}

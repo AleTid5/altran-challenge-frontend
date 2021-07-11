@@ -24,7 +24,8 @@ export default function useBrastlewarkAPI() {
   useEffect(() => {
     (async () => {
       try {
-        setError(null);
+        //setError(null);
+        setError(Error.FETCHING);
         setGnomes(await fetchAPI());
       } catch (e) {
         setError(Error.FETCHING);
