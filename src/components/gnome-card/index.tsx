@@ -33,33 +33,35 @@ export default function GnomeCard({ gnome }: { gnome: GnomeInterface }) {
             </div>
           </Tooltip>
         </div>
-        {gnome.professions!.length > 0 && (
-          <div className="gnome-attribute-container">
-            <div className="gnome-attribute-title">Professions</div>
-            <div className="gnome-badges">
-              {gnome.professions?.map((profession, key) => (
-                <Badge key={key} text={profession.trim()} />
-              ))}
-            </div>
+        <div className="gnome-attribute-container">
+          <div className="gnome-attribute-title">
+            {gnome.professions!.length > 0
+              ? "Professions"
+              : "Is looking for a job"}
           </div>
-        )}
-        {gnome.friends!.length > 0 && (
-          <div className="gnome-attribute-container">
-            <div className="gnome-attribute-title">Friends</div>
-            <div className="gnome-badges">
-              {gnome.friends?.map((friendName, key) => (
-                <a
-                  key={key}
-                  onClick={() =>
-                    onFriendSelect(transformNameToKebabCase(friendName))
-                  }
-                >
-                  <Badge text={friendName.trim()} color="red" />
-                </a>
-              ))}
-            </div>
+          <div className="gnome-badges">
+            {gnome.professions?.map((profession, key) => (
+              <Badge key={key} text={profession.trim()} />
+            ))}
           </div>
-        )}
+        </div>
+        <div className="gnome-attribute-container">
+          <div className="gnome-attribute-title">
+            {gnome.friends!.length > 0 ? "Friends" : "Is a hermit"}
+          </div>
+          <div className="gnome-badges">
+            {gnome.friends?.map((friendName, key) => (
+              <a
+                key={key}
+                onClick={() =>
+                  onFriendSelect(transformNameToKebabCase(friendName))
+                }
+              >
+                <Badge text={friendName.trim()} color="red" />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

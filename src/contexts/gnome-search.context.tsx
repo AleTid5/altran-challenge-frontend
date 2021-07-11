@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   GnomeSearchContextInterface,
   GnomeSearchProviderInterface,
@@ -6,7 +6,9 @@ import {
 
 const GnomeSearchContext = createContext({
   filter: "",
+  isSearching: false,
   setFilter: (S: string) => {},
+  setIsSearching: (S: boolean) => {},
 } as GnomeSearchContextInterface);
 
 const { Provider } = GnomeSearchContext;
@@ -15,8 +17,17 @@ export const GnomeSearchProvider = ({
   children,
 }: GnomeSearchProviderInterface) => {
   const [filter, setFilter] = useState<string>("");
+  const [isSearching, setIsSearching] = useState<boolean>(true);
 
-  return <Provider value={{ filter, setFilter }}>{children}</Provider>;
+  useEffect(() => {
+    document.body.style.overflow = isSearching ? "hidden" : "auto";
+  }, [isSearching]);
+
+  return (
+    <Provider value={{ filter, isSearching, setFilter, setIsSearching }}>
+      {children}
+    </Provider>
+  );
 };
 
 export const useGnomeSearchContext = () => {

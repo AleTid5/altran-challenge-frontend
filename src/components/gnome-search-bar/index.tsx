@@ -5,7 +5,7 @@ export default function GnomeSearchBar() {
   return (
     <div className="search-bar">
       <BarIcon className="cursor-pointer" />
-      <SearchInput className="search-bar-input" />
+      <SearchInput />
     </div>
   );
 }
