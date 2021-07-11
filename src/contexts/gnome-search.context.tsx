@@ -17,7 +17,7 @@ export const GnomeSearchProvider = ({
   children,
 }: GnomeSearchProviderInterface) => {
   const [filter, setFilter] = useState<string>("");
-  const [isSearching, setIsSearching] = useState<boolean>(true);
+  const [isSearching, setIsSearching] = useState<boolean>(false);
 
   useEffect(() => {
     document.body.style.overflow = isSearching ? "hidden" : "auto";
