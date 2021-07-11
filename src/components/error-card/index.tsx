@@ -19,6 +19,10 @@ export default function ErrorCard({ error }: { error: Error }) {
           The only thing you can know about the error is that{" "}
           {getErrorMessage()}
         </div>
+        <div className="error-card-description">
+          You can reload the page to try again. If the problem persists, please
+          feel free to contact our great support team 🚀
+        </div>
       </div>
     </div>
   );

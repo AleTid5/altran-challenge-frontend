@@ -10,8 +10,6 @@ export default function GnomeGrid() {
   const { filter } = useGnomeSearchContext();
   const [gnomes, error] = useBrastlewarkAPI();
 
-  console.log(error);
-
   return (
     <Suspense fallback={<GnomeCardSkeleton />}>
       {error ? (
