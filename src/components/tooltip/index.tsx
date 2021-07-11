@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
-interface TooltipInterface {
+interface TooltipProps {
   children: ReactNode;
   text: string;
 }
 
-export default function Tooltip({ children, text }: TooltipInterface) {
+export default function Tooltip({ children, text }: TooltipProps) {
   return (
     <div className="tooltip top">
       {children}

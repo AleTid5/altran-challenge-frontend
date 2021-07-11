@@ -1,10 +1,10 @@
 import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
 
-interface SearchInputInterface {
+interface SearchInputProps {
   className?: string;
 }
 
-export default function SearchInput({ className }: SearchInputInterface) {
+export default function SearchInput({ className }: SearchInputProps) {
   const { setFilter } = useGnomeSearchContext();
 
   return (

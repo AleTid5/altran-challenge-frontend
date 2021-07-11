@@ -19,23 +19,18 @@ const fetchAPI = async (): Promise<GnomeInterface[]> => {
 
 export default function useBrastlewarkAPI() {
   const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [gnomes, setGnomes] = useState<GnomeInterface[]>([]);
 
   useEffect(() => {
-    setError(null);
-
     (async () => {
       try {
-        setIsLoading(true);
+        setError(null);
         setGnomes(await fetchAPI());
       } catch (e) {
         setError(Error.FETCHING);
-      } finally {
-        setIsLoading(false);
       }
     })();
   }, []);
 
-  return [gnomes, isLoading, error] as const;
+  return [gnomes, error] as const;
 }
