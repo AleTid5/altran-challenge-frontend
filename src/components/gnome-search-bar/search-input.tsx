@@ -14,6 +14,7 @@ export default function SearchInput() {
   return (
     <div className="search-bar-input-container">
       <input
+        data-testid="search-bar-input"
         type="text"
         className="search-bar-input"
         placeholder="Search a Gnome..."
