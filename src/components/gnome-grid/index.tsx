@@ -16,8 +16,6 @@ export default function GnomeGrid() {
   const isAtTheBottom = usePageBottom();
   const [gnomes, error] = useBrastlewarkAPI();
 
-  console.log(gnomes);
-
   const filteredGnomes = useMemo(
     () =>
       gnomes.filter((gnome: GnomeInterface) =>
