@@ -44,7 +44,7 @@ export default function GnomeSearchBar() {
           <SearchInput />
         </div>
       )}
-      {areFiltersOpened && (
+      {isTablet && areFiltersOpened && (
         <div className="mobile-search-container">
           <div className="filter-container">
             <SearchInput />
