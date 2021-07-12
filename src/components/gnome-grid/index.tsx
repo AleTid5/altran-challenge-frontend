@@ -42,6 +42,7 @@ export default function GnomeGrid() {
       // Increments the cards to render
       setRenderedCards(renderedCards + CARDS_TO_RENDER);
     }
+    // eslint-disable-next-line
   }, [isAtTheBottom]);
 
   const renderGnomeGrid = () => {

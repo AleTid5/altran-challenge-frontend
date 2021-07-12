@@ -5,21 +5,19 @@ import * as useBrastlewarkAPI from "../../../custom-hooks/useBrastlewarkAPI";
 import App from "../index";
 
 describe("Gnome Grid Test", () => {
-  test("should correctly render the gnome grid", async () => {
+  beforeEach(() => {
     jest
       .spyOn(useBrastlewarkAPI, "default")
       .mockReturnValue([mockedGnomes, null]);
+  });
 
+  test("should correctly render the gnome grid", async () => {
     const { getByText } = render(<App />);
 
     await waitFor(() => getByText(/tobus quickwhistle/i));
   });
 
-  test("should correctly filter the gnomes", async () => {
-    jest
-      .spyOn(useBrastlewarkAPI, "default")
-      .mockReturnValue([mockedGnomes, null]);
-
+  test("should correctly filter by gnome name and retrieve gnomes and friends", async () => {
     const { getByText, getByTestId, queryByText } = render(<App />);
 
     const input = getByTestId("search-bar-input");
@@ -33,11 +31,7 @@ describe("Gnome Grid Test", () => {
     expect(queryByText(/fizkin voidbuster/i)).toBeNull();
   });
 
-  test("should correctly filter the gnomes and render the not found card", async () => {
-    jest
-      .spyOn(useBrastlewarkAPI, "default")
-      .mockReturnValue([mockedGnomes, null]);
-
+  test("should correctly filter by gnome name and render the not found card", async () => {
     const { getByText, getByTestId, queryByText } = render(<App />);
 
     const input = getByTestId("search-bar-input");
@@ -52,11 +46,7 @@ describe("Gnome Grid Test", () => {
     getByText(/try changing the filters!/i);
   });
 
-  test("should correctly filter the gnomes, render the not found card and reset the filter", async () => {
-    jest
-      .spyOn(useBrastlewarkAPI, "default")
-      .mockReturnValue([mockedGnomes, null]);
-
+  test("should correctly filter by gnome name, render the not found card and reset the gnome name filter", async () => {
     const { getByText, getByTestId, queryByText } = render(<App />);
 
     const input = getByTestId("search-bar-input");

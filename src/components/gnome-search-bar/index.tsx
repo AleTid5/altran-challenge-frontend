@@ -17,6 +17,7 @@ export default function GnomeSearchBar() {
       setAreFiltersOpened(false);
       setIsSearching(false);
     }
+    // eslint-disable-next-line
   }, [isTablet]);
 
   useEffect(() => {

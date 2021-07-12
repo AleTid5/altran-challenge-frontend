@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Select, { ValueType } from "react-select";
 import { OptionTypeBase } from "react-select/src/types";
 import makeAnimated from "react-select/animated";
