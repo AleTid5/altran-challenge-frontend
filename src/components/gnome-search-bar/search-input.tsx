@@ -1,10 +1,13 @@
+import { useState } from "react";
+import useScreenResizing from "screen-resizing";
 import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
 import SearchIcon from "../../assets/icons/search.icon";
-import { useState } from "react";
 
 export default function SearchInput() {
-  const [search, setSearch] = useState<string>("");
-  const { setGnomeNameFilter, setIsSearching } = useGnomeSearchContext();
+  const { gnomeNameFilter, setGnomeNameFilter, setIsSearching } =
+    useGnomeSearchContext();
+  const [search, setSearch] = useState<string>(gnomeNameFilter);
+  const { isTablet } = useScreenResizing();
 
   const filterGnomes = () => {
     setGnomeNameFilter(search);
@@ -19,8 +22,8 @@ export default function SearchInput() {
         className="search-bar-input"
         placeholder="Search a Gnome..."
         value={search}
-        onFocus={() => setIsSearching(true)}
-        onBlur={() => setIsSearching(false)}
+        onFocus={() => !isTablet && setIsSearching(true)}
+        onBlur={() => !isTablet && setIsSearching(false)}
         onChange={({ target: { value } }) => {
           setIsSearching(true);
           setSearch(value);

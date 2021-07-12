@@ -11,16 +11,19 @@ interface SelectInterface extends OptionTypeBase {
 }
 
 const animatedComponents = makeAnimated();
-const hairsColors = Object.keys(HairColor).map(
-  (hairsColor) =>
-    ({
-      label: hairsColor,
-      value: hairsColor,
-    } as SelectInterface)
-);
+
+const getHairsColors = (hairsColors: string[]) =>
+  hairsColors.map(
+    (hairsColor) =>
+      ({
+        label: hairsColor,
+        value: hairsColor,
+      } as SelectInterface)
+  );
 
 export default function HairColorSelect() {
-  const { setGnomeHairColorsFilter } = useGnomeSearchContext();
+  const { gnomeHairColorsFilter, setGnomeHairColorsFilter } =
+    useGnomeSearchContext();
 
   const onChange = (
     colors: ValueType<{ label: string; value: string }, true>
@@ -31,10 +34,10 @@ export default function HairColorSelect() {
   return (
     <Select
       closeMenuOnSelect={false}
-      components={animatedComponents}
-      defaultValue={null}
       isMulti
-      options={hairsColors}
+      components={animatedComponents}
+      defaultValue={getHairsColors(gnomeHairColorsFilter)}
+      options={getHairsColors(Object.keys(HairColor))}
       className="hair-color-select"
       // @ts-ignore
       onChange={(value) => onChange(value)}
