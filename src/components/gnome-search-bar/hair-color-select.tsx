@@ -17,8 +17,11 @@ const getHairsColors = (hairsColors: string[]) =>
     (hairsColor) =>
       ({
         label: (
-          <div className="gnome-hair-color">
-            <div className={hairsColor} />
+          <div className="items-center">
+            <div className="gnome-hair-color">
+              <div className={hairsColor} />
+            </div>
+            <div className="gnome-hair-color-name">{hairsColor}</div>
           </div>
         ),
         value: hairsColor,
@@ -43,7 +46,7 @@ export default function HairColorSelect() {
       defaultValue={getHairsColors(gnomeHairColorsFilter)}
       options={getHairsColors(Object.keys(HairColor))}
       className="hair-color-select"
-      placeholder={null}
+      placeholder="Pick a hair color..."
       styles={{
         control: (provided) => ({
           ...provided,
@@ -53,6 +56,12 @@ export default function HairColorSelect() {
           ...provided,
           backgroundColor: "#636975",
           color: "white",
+        }),
+        placeholder: (provided) => ({
+          ...provided,
+          color: "#dddddd",
+          fontStyle: "italic",
+          fontSize: "0.833rem",
         }),
       }}
       theme={(theme) => ({
