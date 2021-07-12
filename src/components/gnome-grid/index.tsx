@@ -1,10 +1,10 @@
 import { Suspense, lazy, useState, useEffect, useMemo } from "react";
 import useBrastlewarkAPI from "../../custom-hooks/useBrastlewarkAPI";
+import usePageBottom from "../../custom-hooks/usePageBottom";
 import { GnomeInterface } from "../../interfaces/gnome.interface";
 import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
-import GnomeCardSkeleton from "../gnome-card/skeleton";
 import ErrorCard from "../error-card";
-import usePageBottom from "../../custom-hooks/usePageBottom";
+import GnomeCardSkeleton from "../gnome-card/skeleton";
 import NotFoundCard from "../not-found-card";
 const GnomeCard = lazy(() => import("../gnome-card"));
 
@@ -15,6 +15,8 @@ export default function GnomeGrid() {
   const { filter } = useGnomeSearchContext();
   const isAtTheBottom = usePageBottom();
   const [gnomes, error] = useBrastlewarkAPI();
+
+  console.log(gnomes);
 
   const filteredGnomes = useMemo(
     () =>
