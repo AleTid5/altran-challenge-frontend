@@ -12,16 +12,23 @@ const CARDS_TO_RENDER: number = 24;
 
 export default function GnomeGrid() {
   const [renderedCards, setRenderedCards] = useState<number>(CARDS_TO_RENDER);
-  const { filter } = useGnomeSearchContext();
+  const { gnomeNameFilter } = useGnomeSearchContext();
   const isAtTheBottom = usePageBottom();
   const [gnomes, error] = useBrastlewarkAPI();
 
   const filteredGnomes = useMemo(
     () =>
-      gnomes.filter((gnome: GnomeInterface) =>
-        gnome.name.toLowerCase().includes(filter.toLowerCase())
+      gnomes.filter(
+        (gnome: GnomeInterface) =>
+          gnome.name.toLowerCase().includes(gnomeNameFilter.toLowerCase()) ||
+          gnome.friends!.some((gnomeFriend) =>
+            gnomeFriend
+              .trim()
+              .toLowerCase()
+              .includes(gnomeNameFilter.toLowerCase())
+          )
       ),
-    [gnomes, filter]
+    [gnomes, gnomeNameFilter]
   );
 
   useEffect(() => {
@@ -36,7 +43,7 @@ export default function GnomeGrid() {
       return <ErrorCard error={error} />;
     }
 
-    if (filteredGnomes.length === 0 && filter.length > 0) {
+    if (filteredGnomes.length === 0 && gnomeNameFilter.length > 0) {
       return <NotFoundCard />;
     }
 

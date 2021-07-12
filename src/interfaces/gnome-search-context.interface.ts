@@ -5,8 +5,8 @@ export interface GnomeSearchProviderInterface {
 }
 
 export interface GnomeSearchContextInterface {
-  filter: string;
+  gnomeNameFilter: string;
+  setGnomeNameFilter: (S: string) => void;
   isSearching: boolean;
-  setFilter: (S: string) => void;
   setIsSearching: (S: boolean) => void;
 }

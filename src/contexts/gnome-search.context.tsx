@@ -5,9 +5,9 @@ import {
 } from "../interfaces/gnome-search-context.interface";
 
 const GnomeSearchContext = createContext({
-  filter: "",
+  gnomeNameFilter: "",
   isSearching: false,
-  setFilter: (S: string) => {},
+  setGnomeNameFilter: (S: string) => {},
   setIsSearching: (S: boolean) => {},
 } as GnomeSearchContextInterface);
 
@@ -24,7 +24,14 @@ export const GnomeSearchProvider = ({
   }, [isSearching]);
 
   return (
-    <Provider value={{ filter, isSearching, setFilter, setIsSearching }}>
+    <Provider
+      value={{
+        gnomeNameFilter: filter,
+        isSearching,
+        setGnomeNameFilter: setFilter,
+        setIsSearching,
+      }}
+    >
       {children}
     </Provider>
   );

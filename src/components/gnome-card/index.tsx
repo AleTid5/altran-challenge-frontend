@@ -6,10 +6,6 @@ export default function GnomeCard({ gnome }: { gnome: GnomeInterface }) {
   const transformNameToKebabCase = (name: string) =>
     name.trim().replace(/ /g, "-");
 
-  const onFriendSelect = (friendId: string) => {
-    document.getElementById(friendId)?.scrollIntoView({ block: "center" });
-  };
-
   return (
     <div className="gnome-card" id={transformNameToKebabCase(gnome.name)}>
       <div className="profile space-between">
@@ -28,7 +24,7 @@ export default function GnomeCard({ gnome }: { gnome: GnomeInterface }) {
         <div className="gnome-information-row">
           <div className="gnome-age">{gnome.age} years</div>
           <Tooltip text={`Hair Color: ${gnome.hair_color}`}>
-            <div className="cursor-pointer gnome-hair-color">
+            <div className="user-none gnome-hair-color">
               <div className={gnome.hair_color} />
             </div>
           </Tooltip>
@@ -55,14 +51,7 @@ export default function GnomeCard({ gnome }: { gnome: GnomeInterface }) {
             {gnome.friends
               ?.sort((a, b) => b.length - a.length)
               .map((friendName, key) => (
-                <Badge
-                  key={key}
-                  text={friendName.trim()}
-                  color="red"
-                  onClick={() =>
-                    onFriendSelect(transformNameToKebabCase(friendName))
-                  }
-                />
+                <Badge key={key} text={friendName.trim()} color="red" />
               ))}
           </div>
         </div>

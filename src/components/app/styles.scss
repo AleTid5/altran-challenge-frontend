@@ -42,6 +42,10 @@ code {
   cursor: pointer;
 }
 
+.user-none {
+  user-select: none;
+}
+
 .space-between {
   display: flex;
   justify-content: space-between;

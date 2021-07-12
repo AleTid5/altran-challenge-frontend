@@ -9,6 +9,10 @@
   justify-content: space-between;
   z-index: 2;
 
+  .filter-container {
+    display: flex;
+  }
+
   &-input {
     color: white;
     padding: .5rem;
@@ -35,6 +39,7 @@
   }
 
   .search-bar-input-container {
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -43,7 +48,7 @@
       width: 24px;
       height: 24px;
       position: absolute;
-      right: 2rem;
+      right: 0.75rem;
       display: flex;
       align-items: center;
       justify-content: center;

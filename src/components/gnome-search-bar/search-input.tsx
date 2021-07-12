@@ -4,10 +4,10 @@ import { useState } from "react";
 
 export default function SearchInput() {
   const [search, setSearch] = useState<string>("");
-  const { setFilter, setIsSearching } = useGnomeSearchContext();
+  const { setGnomeNameFilter, setIsSearching } = useGnomeSearchContext();
 
   const filterGnomes = () => {
-    setFilter(search);
+    setGnomeNameFilter(search);
     setIsSearching(false);
   };
 

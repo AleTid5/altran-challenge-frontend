@@ -44,11 +44,12 @@ describe("Gnome Grid Test", () => {
     await waitFor(() => getByText(/tobus quickwhistle/i));
     getByText(/fizkin voidbuster/i);
 
-    fireEvent.change(input, { target: { value: "Unknown data" } });
+    fireEvent.change(input, { target: { value: "Lorem ipsum" } });
     fireEvent.keyDown(input, { key: "Enter", keyCode: 13 });
 
     expect(queryByText(/fizkin voidbuster/i)).toBeNull();
-    getByText(/there are no gnomes with that name! try changing the filter!/i);
+    getByText(/"lorem ipsum"/i);
+    getByText(/try changing the name!/i);
   });
 
   test("should correctly filter the gnomes, render the not found card and reset the filter", async () => {
@@ -62,11 +63,12 @@ describe("Gnome Grid Test", () => {
     await waitFor(() => getByText(/tobus quickwhistle/i));
     getByText(/fizkin voidbuster/i);
 
-    fireEvent.change(input, { target: { value: "Unknown data" } });
+    fireEvent.change(input, { target: { value: "Lorem ipsum" } });
     fireEvent.keyDown(input, { key: "Enter", keyCode: 13 });
 
     expect(queryByText(/fizkin voidbuster/i)).toBeNull();
-    getByText(/there are no gnomes with that name! try changing the filter!/i);
+    getByText(/"lorem ipsum"/i);
+    getByText(/try changing the name!/i);
 
     fireEvent.change(input, { target: { value: "" } });
     fireEvent.keyDown(input, { key: "Enter", keyCode: 13 });

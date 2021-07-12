@@ -6,7 +6,10 @@ interface BadgeProps {
 
 export default function Badge({ text, color = "blue", onClick }: BadgeProps) {
   return (
-    <div className={`badge ${color}`} onClick={onClick}>
+    <div
+      className={`badge ${color} ${onClick ? "cursor-pointer" : "user-none"}`}
+      onClick={onClick}
+    >
       {text}
     </div>
   );
