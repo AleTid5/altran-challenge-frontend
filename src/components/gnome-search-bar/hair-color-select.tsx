@@ -6,7 +6,7 @@ import { HairColor } from "../../enums/hair-color.enum";
 import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
 
 interface SelectInterface extends OptionTypeBase {
-  label: string;
+  label: string | JSX.Element;
   value: string;
 }
 
@@ -16,7 +16,11 @@ const getHairsColors = (hairsColors: string[]) =>
   hairsColors.map(
     (hairsColor) =>
       ({
-        label: hairsColor,
+        label: (
+          <div className="gnome-hair-color">
+            <div className={hairsColor} />
+          </div>
+        ),
         value: hairsColor,
       } as SelectInterface)
   );
@@ -28,7 +32,7 @@ export default function HairColorSelect() {
   const onChange = (
     colors: ValueType<{ label: string; value: string }, true>
   ) => {
-    setGnomeHairColorsFilter(colors?.map(({ label }) => label));
+    setGnomeHairColorsFilter(colors?.map(({ value }) => value));
   };
 
   return (
@@ -39,6 +43,31 @@ export default function HairColorSelect() {
       defaultValue={getHairsColors(gnomeHairColorsFilter)}
       options={getHairsColors(Object.keys(HairColor))}
       className="hair-color-select"
+      placeholder={null}
+      styles={{
+        control: (provided) => ({
+          ...provided,
+          backgroundColor: "#6e737a",
+        }),
+        multiValue: (provided) => ({
+          ...provided,
+          backgroundColor: "#636975",
+          color: "white",
+        }),
+      }}
+      theme={(theme) => ({
+        ...theme,
+        borderRadius: 8,
+        spacing: {
+          ...theme.spacing,
+          baseUnit: 2,
+          controlHeight: 15,
+        },
+        colors: {
+          ...theme.colors,
+          primary: "#fcd34d",
+        },
+      })}
       // @ts-ignore
       onChange={(value) => onChange(value)}
     />
