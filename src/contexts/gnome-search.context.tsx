@@ -5,10 +5,12 @@ import {
 } from "../interfaces/gnome-search-context.interface";
 
 const GnomeSearchContext = createContext({
-  gnomeNameFilter: "",
   isSearching: false,
-  setGnomeNameFilter: (S: string) => {},
+  gnomeNameFilter: "",
+  gnomeHairColorsFilter: [],
   setIsSearching: (S: boolean) => {},
+  setGnomeNameFilter: (S: string) => {},
+  setGnomeHairColorsFilter: (S: string[]) => {},
 } as GnomeSearchContextInterface);
 
 const { Provider } = GnomeSearchContext;
@@ -16,8 +18,11 @@ const { Provider } = GnomeSearchContext;
 export const GnomeSearchProvider = ({
   children,
 }: GnomeSearchProviderInterface) => {
-  const [filter, setFilter] = useState<string>("");
   const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [gnomeNameFilter, setGnomeNameFilter] = useState<string>("");
+  const [gnomeHairColorsFilter, setGnomeHairColorsFilter] = useState<string[]>(
+    []
+  );
 
   useEffect(() => {
     document.body.style.overflow = isSearching ? "hidden" : "auto";
@@ -26,10 +31,12 @@ export const GnomeSearchProvider = ({
   return (
     <Provider
       value={{
-        gnomeNameFilter: filter,
         isSearching,
-        setGnomeNameFilter: setFilter,
         setIsSearching,
+        gnomeNameFilter,
+        setGnomeNameFilter,
+        gnomeHairColorsFilter,
+        setGnomeHairColorsFilter,
       }}
     >
       {children}

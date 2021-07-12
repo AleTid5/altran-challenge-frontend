@@ -12,24 +12,30 @@ const CARDS_TO_RENDER: number = 24;
 
 export default function GnomeGrid() {
   const [renderedCards, setRenderedCards] = useState<number>(CARDS_TO_RENDER);
-  const { gnomeNameFilter } = useGnomeSearchContext();
+  const { gnomeNameFilter, gnomeHairColorsFilter } = useGnomeSearchContext();
   const isAtTheBottom = usePageBottom();
   const [gnomes, error] = useBrastlewarkAPI();
 
-  const filteredGnomes = useMemo(
-    () =>
-      gnomes.filter(
-        (gnome: GnomeInterface) =>
-          gnome.name.toLowerCase().includes(gnomeNameFilter.toLowerCase()) ||
-          gnome.friends!.some((gnomeFriend) =>
-            gnomeFriend
-              .trim()
-              .toLowerCase()
-              .includes(gnomeNameFilter.toLowerCase())
-          )
-      ),
-    [gnomes, gnomeNameFilter]
-  );
+  const filteredGnomes = useMemo(() => {
+    let filteredGnomes: GnomeInterface[] = gnomes.filter(
+      (gnome: GnomeInterface) =>
+        gnome.name.toLowerCase().includes(gnomeNameFilter.toLowerCase()) ||
+        gnome.friends!.some((gnomeFriend) =>
+          gnomeFriend
+            .trim()
+            .toLowerCase()
+            .includes(gnomeNameFilter.toLowerCase())
+        )
+    );
+
+    if (gnomeHairColorsFilter.length > 0) {
+      filteredGnomes = filteredGnomes.filter((gnome: GnomeInterface) =>
+        gnomeHairColorsFilter.includes(gnome.hair_color)
+      );
+    }
+
+    return filteredGnomes;
+  }, [gnomes, gnomeNameFilter, gnomeHairColorsFilter]);
 
   useEffect(() => {
     if (isAtTheBottom) {
@@ -50,7 +56,10 @@ export default function GnomeGrid() {
     return (
       <div className="gnome-grid">
         {filteredGnomes
-          .filter((_v, key: number) => key < renderedCards)
+          .filter(
+            (_v, key: number) =>
+              gnomeNameFilter.length > 0 || key < renderedCards
+          )
           .map((gnome: GnomeInterface, key: number) => (
             <GnomeCard key={key} gnome={gnome} />
           ))}

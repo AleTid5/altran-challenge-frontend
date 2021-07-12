@@ -11,6 +11,7 @@
 
   .filter-container {
     display: flex;
+    align-items: center;
   }
 
   &-input {
@@ -59,5 +60,9 @@
         height: 20px;
       }
     }
+  }
+
+  .hair-color-select {
+    min-width: 120px
   }
 }

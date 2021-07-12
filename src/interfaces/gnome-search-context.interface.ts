@@ -7,6 +7,8 @@ export interface GnomeSearchProviderInterface {
 export interface GnomeSearchContextInterface {
   gnomeNameFilter: string;
   setGnomeNameFilter: (S: string) => void;
+  gnomeHairColorsFilter: string[];
+  setGnomeHairColorsFilter: (S: string[]) => void;
   isSearching: boolean;
   setIsSearching: (S: boolean) => void;
 }
