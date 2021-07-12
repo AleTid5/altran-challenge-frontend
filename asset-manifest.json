@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/altran-challenge-frontend/static/css/main.2550aa71.chunk.css",
-    "main.js": "/altran-challenge-frontend/static/js/main.3e3588bf.chunk.js",
-    "main.js.map": "/altran-challenge-frontend/static/js/main.3e3588bf.chunk.js.map",
-    "runtime-main.js": "/altran-challenge-frontend/static/js/runtime-main.9c48d98f.js",
-    "runtime-main.js.map": "/altran-challenge-frontend/static/js/runtime-main.9c48d98f.js.map",
-    "static/js/2.f6b9236d.chunk.js": "/altran-challenge-frontend/static/js/2.f6b9236d.chunk.js",
-    "static/js/2.f6b9236d.chunk.js.map": "/altran-challenge-frontend/static/js/2.f6b9236d.chunk.js.map",
-    "static/js/3.e33a717c.chunk.js": "/altran-challenge-frontend/static/js/3.e33a717c.chunk.js",
-    "static/js/3.e33a717c.chunk.js.map": "/altran-challenge-frontend/static/js/3.e33a717c.chunk.js.map",
+    "main.css": "/altran-challenge-frontend/static/css/main.b3288757.chunk.css",
+    "main.js": "/altran-challenge-frontend/static/js/main.3ab84b28.chunk.js",
+    "main.js.map": "/altran-challenge-frontend/static/js/main.3ab84b28.chunk.js.map",
+    "runtime-main.js": "/altran-challenge-frontend/static/js/runtime-main.7a10efbd.js",
+    "runtime-main.js.map": "/altran-challenge-frontend/static/js/runtime-main.7a10efbd.js.map",
+    "static/js/2.004ce920.chunk.js": "/altran-challenge-frontend/static/js/2.004ce920.chunk.js",
+    "static/js/2.004ce920.chunk.js.map": "/altran-challenge-frontend/static/js/2.004ce920.chunk.js.map",
+    "static/js/3.a4ce0397.chunk.js": "/altran-challenge-frontend/static/js/3.a4ce0397.chunk.js",
+    "static/js/3.a4ce0397.chunk.js.map": "/altran-challenge-frontend/static/js/3.a4ce0397.chunk.js.map",
     "index.html": "/altran-challenge-frontend/index.html",
-    "static/css/main.2550aa71.chunk.css.map": "/altran-challenge-frontend/static/css/main.2550aa71.chunk.css.map",
-    "static/js/2.f6b9236d.chunk.js.LICENSE.txt": "/altran-challenge-frontend/static/js/2.f6b9236d.chunk.js.LICENSE.txt"
+    "static/css/main.b3288757.chunk.css.map": "/altran-challenge-frontend/static/css/main.b3288757.chunk.css.map",
+    "static/js/2.004ce920.chunk.js.LICENSE.txt": "/altran-challenge-frontend/static/js/2.004ce920.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.9c48d98f.js",
-    "static/js/2.f6b9236d.chunk.js",
-    "static/css/main.2550aa71.chunk.css",
-    "static/js/main.3e3588bf.chunk.js"
+    "static/js/runtime-main.7a10efbd.js",
+    "static/js/2.004ce920.chunk.js",
+    "static/css/main.b3288757.chunk.css",
+    "static/js/main.3ab84b28.chunk.js"
   ]
 }
