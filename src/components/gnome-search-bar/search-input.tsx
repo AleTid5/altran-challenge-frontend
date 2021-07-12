@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useScreenResizing from "screen-resizing";
-import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
 import SearchIcon from "../../assets/icons/search.icon";
+import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
+import useScreenResizing from "../../custom-hooks/useScreenResizing";
 
 export default function SearchInput() {
   const { gnomeNameFilter, setGnomeNameFilter, setIsSearching } =

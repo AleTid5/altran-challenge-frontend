@@ -49,7 +49,7 @@ describe("Gnome Grid Test", () => {
 
     expect(queryByText(/fizkin voidbuster/i)).toBeNull();
     getByText(/"lorem ipsum"/i);
-    getByText(/try changing the name!/i);
+    getByText(/try changing the filters!/i);
   });
 
   test("should correctly filter the gnomes, render the not found card and reset the filter", async () => {
@@ -68,7 +68,7 @@ describe("Gnome Grid Test", () => {
 
     expect(queryByText(/fizkin voidbuster/i)).toBeNull();
     getByText(/"lorem ipsum"/i);
-    getByText(/try changing the name!/i);
+    getByText(/try changing the filters!/i);
 
     fireEvent.change(input, { target: { value: "" } });
     fireEvent.keyDown(input, { key: "Enter", keyCode: 13 });

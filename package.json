@@ -17,7 +17,6 @@
     "react-loading-skeleton": "^2.2.0",
     "react-scripts": "^4.0.3",
     "react-select": "^4.3.1",
-    "screen-resizing": "^1.1.0",
     "typescript": "^4.3.5",
     "web-vitals": "^1.1.2"
   },

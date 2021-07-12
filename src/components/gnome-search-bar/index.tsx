@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useScreenResizing from "screen-resizing";
 import BarIcon from "../../assets/icons/bar.icon";
+import CloseIcon from "../../assets/icons/close.icon";
 import GnomeIcon from "../../assets/icons/gnome.icon";
 import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
+import useScreenResizing from "../../custom-hooks/useScreenResizing";
 import HairColorSelect from "./hair-color-select";
 import SearchInput from "./search-input";
-import CloseIcon from "../../assets/icons/close.icon";
 
 export default function GnomeSearchBar() {
   const [areFiltersOpened, setAreFiltersOpened] = useState<boolean>(false);
