@@ -13,12 +13,11 @@
   }
 
   @include media(lg) {
-    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
   }
 
   @include media(xl) {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
   }
 }

@@ -17,7 +17,7 @@ export default function GnomeCard({ gnome }: { gnome: GnomeInterface }) {
         <div className="profile-image">
           <img
             src={gnome.thumbnail}
-            alt={`${gnome.name.trim()} profile image`}
+            alt={`${gnome.name.trim()}`}
             loading="lazy"
           />
         </div>
@@ -40,9 +40,11 @@ export default function GnomeCard({ gnome }: { gnome: GnomeInterface }) {
               : "Is looking for a job"}
           </div>
           <div className="gnome-badges">
-            {gnome.professions?.map((profession, key) => (
-              <Badge key={key} text={profession.trim()} />
-            ))}
+            {gnome.professions
+              ?.sort((a, b) => b.length - a.length)
+              .map((profession, key) => (
+                <Badge key={key} text={profession.trim()} />
+              ))}
           </div>
         </div>
         <div className="gnome-attribute-container">
@@ -50,16 +52,18 @@ export default function GnomeCard({ gnome }: { gnome: GnomeInterface }) {
             {gnome.friends!.length > 0 ? "Friends" : "Is a hermit"}
           </div>
           <div className="gnome-badges">
-            {gnome.friends?.map((friendName, key) => (
-              <a
-                key={key}
-                onClick={() =>
-                  onFriendSelect(transformNameToKebabCase(friendName))
-                }
-              >
-                <Badge text={friendName.trim()} color="red" />
-              </a>
-            ))}
+            {gnome.friends
+              ?.sort((a, b) => b.length - a.length)
+              .map((friendName, key) => (
+                <Badge
+                  key={key}
+                  text={friendName.trim()}
+                  color="red"
+                  onClick={() =>
+                    onFriendSelect(transformNameToKebabCase(friendName))
+                  }
+                />
+              ))}
           </div>
         </div>
       </div>
