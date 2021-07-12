@@ -9,6 +9,7 @@ export default function ErrorCard({ error }: { error: Error }) {
         return "it's something internal and that we are already working to solve it. Please try again in a few minutes 😄";
     }
   };
+
   return (
     <div className="error-card-container">
       <div className="error-card">

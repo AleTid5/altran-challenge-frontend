@@ -1,10 +1,11 @@
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy, useState, useEffect, useMemo } from "react";
 import useBrastlewarkAPI from "../../custom-hooks/useBrastlewarkAPI";
 import { GnomeInterface } from "../../interfaces/gnome.interface";
 import { useGnomeSearchContext } from "../../contexts/gnome-search.context";
 import GnomeCardSkeleton from "../gnome-card/skeleton";
 import ErrorCard from "../error-card";
 import usePageBottom from "../../custom-hooks/usePageBottom";
+import NotFoundCard from "../not-found-card";
 const GnomeCard = lazy(() => import("../gnome-card"));
 
 const CARDS_TO_RENDER: number = 24;
@@ -15,6 +16,14 @@ export default function GnomeGrid() {
   const isAtTheBottom = usePageBottom();
   const [gnomes, error] = useBrastlewarkAPI();
 
+  const filteredGnomes = useMemo(
+    () =>
+      gnomes.filter((gnome: GnomeInterface) =>
+        gnome.name.toLowerCase().includes(filter.toLowerCase())
+      ),
+    [gnomes, filter]
+  );
+
   useEffect(() => {
     if (isAtTheBottom) {
       // Increments the cards to render
@@ -22,22 +31,27 @@ export default function GnomeGrid() {
     }
   }, [isAtTheBottom]);
 
+  const renderGnomeGrid = () => {
+    if (error) {
+      return <ErrorCard error={error} />;
+    }
+
+    if (filteredGnomes.length === 0 && filter.length > 0) {
+      return <NotFoundCard />;
+    }
+
+    return (
+      <div className="gnome-grid">
+        {filteredGnomes
+          .filter((_v, key: number) => key < renderedCards)
+          .map((gnome: GnomeInterface, key: number) => (
+            <GnomeCard key={key} gnome={gnome} />
+          ))}
+      </div>
+    );
+  };
+
   return (
-    <Suspense fallback={<GnomeCardSkeleton />}>
-      {error ? (
-        <ErrorCard error={error} />
-      ) : (
-        <div className="gnome-grid">
-          {gnomes
-            .filter((gnome: GnomeInterface) =>
-              gnome.name.toLowerCase().includes(filter.toLowerCase())
-            )
-            .filter((_v, key: number) => key < renderedCards)
-            .map((gnome: GnomeInterface, key: number) => (
-              <GnomeCard key={key} gnome={gnome} />
-            ))}
-        </div>
-      )}
-    </Suspense>
+    <Suspense fallback={<GnomeCardSkeleton />}>{renderGnomeGrid()}</Suspense>
   );
 }
