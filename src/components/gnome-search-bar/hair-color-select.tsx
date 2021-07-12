@@ -50,7 +50,8 @@ export default function HairColorSelect() {
       styles={{
         control: (provided) => ({
           ...provided,
-          backgroundColor: "#6e737a",
+          backgroundColor: "#9ca3af",
+          borderColor: "transparent",
         }),
         multiValue: (provided) => ({
           ...provided,
@@ -61,7 +62,7 @@ export default function HairColorSelect() {
           ...provided,
           color: "#dddddd",
           fontStyle: "italic",
-          fontSize: "0.833rem",
+          fontSize: 13.5,
         }),
       }}
       theme={(theme) => ({
